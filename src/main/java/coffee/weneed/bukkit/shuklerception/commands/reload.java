@@ -7,21 +7,23 @@ import coffee.weneed.bukkit.shuklerception.Shulkerception;
 
 public class reload implements CommandExecutor {
 
-    public Shulkerception main = null;
-    public reload(Shulkerception main){
-        this.main = main;
-    }
+	public Shulkerception main = null;
 
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+	public reload(Shulkerception main) {
+		this.main = main;
+	}
 
-        if(sender.hasPermission("Shulkerception.reload")){
-            main.reloadConfig();
-            main.loadConfiguration();
+	@Override
+	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-            sender.sendMessage("[Shulkerception] config reloaded!");
-        }
+		if (sender.hasPermission("Shulkerception.reload")) {
+			main.reloadConfig();
+			main.loadConfiguration();
 
-        return true;
-    }
+			sender.sendMessage("[Shulkerception] config reloaded!");
+		}
+
+		return true;
+	}
 
 }
