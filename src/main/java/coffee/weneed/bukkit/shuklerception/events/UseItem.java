@@ -21,7 +21,7 @@ public class UseItem implements Listener {
 		// Shulker Box Right Click
 		if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
 			Player player = event.getPlayer();
-			if (!player.hasPermission("ShulkerBoxBackPacks.use"))
+			if (!player.hasPermission("Shulkerception.use"))
 				return;
 
 			ItemStack item = player.getInventory().getItemInMainHand();
