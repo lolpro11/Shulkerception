@@ -1,0 +1,9 @@
+/bin/
+/target/
+/.gradle/
+/gradle/
+/build/
+/target/
+/.settings/
+/.git/
+/out/
