@@ -1,0 +1,21 @@
+# Shulkerception
+# Authors: Brandon (ThirtyVirus) Calabrese, Dalethium
+# Based on ShulkerBoxBackPack by ThirtyVirus 
+# Original Author Link:     https://www.spigotmc.org/members/thirtyvirus.179587/
+
+# Permissions to use the plugin's featues
+permission: Shulkerception.use
+nesting-permission: Shulkerception.nesting
+# Enables modification of placed boxes
+placed: true
+# Allow nesting of Shulker Boxes
+nesting: true
+# Maximum depth of shulker box nesting (-1 is infinite)
+nesting-depth: -1
+
+# Disable plugin functions for renamed Shulker Boxes (for compatability with other plugins)
+use-renamed-boxes: true
+
+# Disable plugin functions for renamed Shulker Boxes with special formatting ONLY (ex. Colors, bold, italics, etc...)
+# This option is automatically disabled if the above is false
+use-formatted-renamed-boxes: false

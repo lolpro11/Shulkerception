@@ -1,0 +1,31 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven {
+        name 'Spigot/Bukkit maven repo'
+        url 'https://hub.spigotmc.org/nexus/content/groups/public/'
+    }
+    maven {
+        name 'daleths-repo'
+        url 'https://dalethium.com/jenkins/plugin/repository/everything'
+    }
+   
+}
+configurations {
+    // configuration that holds jars to include in the jar
+    extraLibs
+}
+dependencies {
+    compile "org.bukkit:bukkit:1.15-R0.1-SNAPSHOT"
+    //extraLibs group: 'coffee.weneed', name: 'utils', version: '1.0.0-SNAPSHOT'
+    configurations.compile.extendsFrom(configurations.extraLibs)
+}
+
+jar {
+    from {
+            configurations.extraLibs.collect { it.isDirectory() ? it : zipTree(it) }
+        }
+}

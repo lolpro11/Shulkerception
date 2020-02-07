@@ -1,0 +1,8 @@
+main: coffee.weneed.bukkit.shuklerception.Shulkerception
+version: 1.1.2
+name: Shulkerception
+api-version: 1.13
+
+commands:
+  scReload:
+    description: Reloads the Shulkerception plugin config
