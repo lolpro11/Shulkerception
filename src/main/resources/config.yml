@@ -6,8 +6,7 @@
 # Permissions to use the plugin's featues
 permission: Shulkerception.use
 nesting-permission: Shulkerception.nesting
-# Enables modification of placed boxes
-placed: true
+
 # Allow nesting of Shulker Boxes
 nesting: true
 # Maximum depth of shulker box nesting (-1 is infinite)

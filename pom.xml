@@ -1,8 +1,10 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>Shulkerception</groupId>
-  <artifactId>Shulkerception</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>Shulkerception</groupId>
+	<artifactId>Shulkerception</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<plugins>
@@ -24,12 +26,12 @@
 			</plugin>
 		</plugins>
 	</build>
-  	<repositories>
+	<repositories>
 		<repository>
 			<id>spigot-repo</id>
 			<url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
 		</repository>
-				<repository>
+		<repository>
 			<id>daleths-repo</id>
 			<url>https://dalethium.com/jenkins/plugin/repository/everything</url>
 			<snapshots>
@@ -47,15 +49,19 @@
 		</repository>
 	</repositories>
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.jetbrains/annotations -->
 		<dependency>
-			<groupId>org.bukkit</groupId>
-			<artifactId>bukkit</artifactId>
-			<version>1.15.2-R0.1-SNAPSHOT</version><!--change this value depending 
-				on the version or use LATEST -->
+			<groupId>org.jetbrains</groupId>
+			<artifactId>annotations</artifactId>
+			<version>16.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.spigotmc</groupId>
+			<artifactId>spigot-api</artifactId>
+			<version>1.15.2-R0.1-SNAPSHOT</version>
 			<type>jar</type>
 			<scope>provided</scope>
 		</dependency>
-		
 		<dependency>
 			<groupId>coffee.weneed</groupId>
 			<artifactId>utils</artifactId>

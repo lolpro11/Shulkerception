@@ -20,6 +20,7 @@ configurations {
 }
 dependencies {
     compile "org.bukkit:bukkit:1.15-R0.1-SNAPSHOT"
+    compile "org.jetbrains:annotations:16.0.1"
     //extraLibs group: 'coffee.weneed', name: 'utils', version: '1.0.0-SNAPSHOT'
     configurations.compile.extendsFrom(configurations.extraLibs)
 }

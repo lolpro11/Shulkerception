@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.ShulkerBox;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -24,6 +25,7 @@ import coffee.weneed.bukkit.shuklerception.events.UseItem;
 
 public class Shulkerception extends JavaPlugin {
 
+	public static final String IDENTIFIER = ChatColor.BLUE + "+" + ChatColor.RESET;
 	public static final List<Material> supportedMaterials = Arrays.asList(Material.SHULKER_BOX, Material.BLACK_SHULKER_BOX, Material.BLUE_SHULKER_BOX, Material.BROWN_SHULKER_BOX, Material.CYAN_SHULKER_BOX, Material.GRAY_SHULKER_BOX, Material.GREEN_SHULKER_BOX, Material.LIGHT_BLUE_SHULKER_BOX, Material.LIGHT_GRAY_SHULKER_BOX, Material.LIME_SHULKER_BOX, Material.MAGENTA_SHULKER_BOX, Material.ORANGE_SHULKER_BOX, Material.PINK_SHULKER_BOX, Material.PURPLE_SHULKER_BOX, Material.RED_SHULKER_BOX, Material.WHITE_SHULKER_BOX, Material.YELLOW_SHULKER_BOX);
 	//Settings
 	public static boolean nesting = false;
@@ -35,7 +37,22 @@ public class Shulkerception extends JavaPlugin {
 
 	public static boolean useNamedBoxes = true;
 	public static boolean useFormattedNamedBoxes = true;
+	public static NestedInventory createShulkerBoxInventory(ItemStack shulkerBoxItemStack, NestedInventory parent) {
 
+		if (shulkerBoxItemStack.getItemMeta() instanceof BlockStateMeta) {
+			BlockStateMeta im = (BlockStateMeta) shulkerBoxItemStack.getItemMeta();
+			if (im.getBlockState() instanceof ShulkerBox) {
+				return new NestedInventory(parent, shulkerBoxItemStack);
+			}
+		}
+		//should never happen, because function is only called for shulker boxes
+		return null;
+	}
+	
+	public static NestedInventory createShulkerBoxInventory(ItemStack shulkerBoxItemStack) {
+		return createShulkerBoxInventory(shulkerBoxItemStack, null);
+	}
+	
 	public static int getNestingDepth(ItemStack shulkerBox, int currentDepth) {
 
 		//make arraylist of all shulker boxes in current box
