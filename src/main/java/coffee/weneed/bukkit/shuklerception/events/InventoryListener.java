@@ -12,6 +12,7 @@ import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BlockStateMeta;
 import coffee.weneed.bukkit.shuklerception.NestedInventory;
@@ -44,13 +45,19 @@ public class InventoryListener implements Listener {
 		// ensure the Inventory is a Shulker Box Backpack Inventory
 		if (!event.getWhoClicked().getGameMode().equals(GameMode.SURVIVAL))
 			return;
-		if (event.getWhoClicked().hasPermission("Shulkerception.use")) {
+		if (event.getWhoClicked().hasPermission("Shulkerception.use") && event.getCursor().getType().isAir()) {
 			if (event.getCurrentItem() != null && event.getCurrentItem().getAmount() == 1 && Shulkerception.supportedMaterials.contains(event.getCurrentItem().getType()) && event.getClick().equals(ClickType.MIDDLE)) {
 				if ((event.getInventory().getHolder() instanceof NestedInventory  || event.getInventory().getHolder() instanceof HumanEntity) && ((event.getInventory().getHolder() instanceof NestedInventory && event.getRawSlot() <= 27) || ((event.getInventory().getHolder() instanceof HumanEntity) && event.getRawSlot() > 8 && event.getRawSlot() <= 44) || (event.getRawSlot() <= 27 && ((NestedInventory) event.getInventory().getHolder()).getParent() != null))) {
 
 					Player player = (Player) event.getWhoClicked();
 					player.playSound(player.getLocation(), Sound.ENTITY_SHULKER_OPEN, 1, 1);
 					event.getWhoClicked().openInventory(Shulkerception.createShulkerBoxInventory(event.getCurrentItem(), event.getInventory().getHolder() instanceof NestedInventory ? (NestedInventory) event.getInventory().getHolder() : null).getInventory());
+					event.setCancelled(true);
+					return;
+				} else if (event.getInventory().getType().equals(InventoryType.ENDER_CHEST) && event.getRawSlot() <= 27) {
+					Player player = (Player) event.getWhoClicked();
+					player.playSound(player.getLocation(), Sound.ENTITY_SHULKER_OPEN, 1, 1);
+					event.getWhoClicked().openInventory(Shulkerception.createShulkerBoxInventory(event.getCurrentItem(), null).getInventory());
 					event.setCancelled(true);
 					return;
 				}
