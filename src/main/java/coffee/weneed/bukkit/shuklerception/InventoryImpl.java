@@ -183,4 +183,9 @@ public class InventoryImpl implements Inventory {
 		return getInventory().getLocation();
 	}
 
+	@Override
+	public boolean isEmpty() {
+		return getInventory().isEmpty();
+	}
+
 }
