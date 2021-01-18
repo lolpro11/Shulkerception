@@ -55,6 +55,14 @@ public class NestedInventory implements InventoryHolder {
 		}
 	}
 
+	public boolean checkTree(ItemStack shulker) {
+		if (getShulker().equals(shulker)) {
+			return true;
+		} else if (getParent() != null) {
+			return getParent().checkTree(shulker);
+		}
+		return false;
+	}
 	public NestedInventory getParent() {
 		return parent;
 	}

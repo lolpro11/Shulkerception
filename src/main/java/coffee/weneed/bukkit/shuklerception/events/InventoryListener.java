@@ -47,8 +47,10 @@ public class InventoryListener implements Listener {
 			return;
 		if (event.getWhoClicked().hasPermission("Shulkerception.use") && event.getCursor().getType().isAir()) {
 			if (event.getCurrentItem() != null && event.getCurrentItem().getAmount() == 1 && Shulkerception.supportedMaterials.contains(event.getCurrentItem().getType()) && event.getClick().equals(ClickType.MIDDLE)) {
-				if ((event.getInventory().getHolder() instanceof NestedInventory  || event.getInventory().getHolder() instanceof HumanEntity) && ((event.getInventory().getHolder() instanceof NestedInventory && event.getRawSlot() <= 27) || ((event.getInventory().getHolder() instanceof HumanEntity) && event.getRawSlot() > 8 && event.getRawSlot() <= 44) || (event.getRawSlot() <= 27 && ((NestedInventory) event.getInventory().getHolder()).getParent() != null))) {
-
+				if ((event.getInventory().getHolder() instanceof NestedInventory || event.getInventory().getHolder() instanceof HumanEntity) && ((event.getInventory().getHolder() instanceof NestedInventory && event.getRawSlot() <= 27) || ((event.getInventory().getHolder() instanceof HumanEntity) && event.getRawSlot() > 8 && event.getRawSlot() <= 44) || (event.getRawSlot() <= 27 && ((NestedInventory) event.getInventory().getHolder()).getParent() != null))) {
+					if (event.getInventory().getHolder() instanceof NestedInventory && ((NestedInventory) event.getInventory().getHolder()).checkTree(event.getCurrentItem())) {
+						return;
+					}
 					Player player = (Player) event.getWhoClicked();
 					player.playSound(player.getLocation(), Sound.ENTITY_SHULKER_OPEN, 1, 1);
 					event.getWhoClicked().openInventory(Shulkerception.createShulkerBoxInventory(event.getCurrentItem(), event.getInventory().getHolder() instanceof NestedInventory ? (NestedInventory) event.getInventory().getHolder() : null).getInventory());
